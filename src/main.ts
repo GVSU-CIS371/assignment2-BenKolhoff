@@ -67,27 +67,78 @@ function applyCream(input: HTMLInputElement): void {
 
 function applySyrup(input: HTMLInputElement): void {
   // TODO: implement this function
+  const syrupElements = document.getElementsByClassName("syrup");
+
+  if (syrupElements.length === 0) return;
+
+  const syrupDiv = syrupElements[0] as HTMLDivElement;
+
+  const color = syrups[input.value];
+  if (!color) return;
+
+  syrupDiv.style.setProperty("--syrup-color", color);
 }
 
 function setupSyrupListeners(): void {
   // TODO: implement this function
+  const syrupInputs = document.getElementsByName("syrup");
+
+  for (let i = 0; i < syrupInputs.length; i++) {
+    const input = syrupInputs[i] as HTMLInputElement;
+    input.addEventListener("change", () => applySyrup(input));
+
+    if (input.checked) {
+      applySyrup(input);
+    }
+  }
 }
 
 setupSyrupListeners();
 
 function setupCreamListeners(): void {
   // TODO: implement this function
+  const creamInputs = document.getElementsByName("cream");
+
+  for (let i = 0; i < creamInputs.length; i++) {
+    const input = creamInputs[i] as HTMLInputElement;
+    input.addEventListener("change", () => applyCream(input));
+
+    if (input.checked) {
+      applyCream(input);
+    }
+  }  
 }
+
 setupCreamListeners();
 
 function setupTemperatureListeners(): void {
   // TODO: implement this function
+  const temperatureInputs = document.getElementsByName("temperature");
+
+  for (let i = 0; i < temperatureInputs.length; i++) {
+    const input = temperatureInputs[i] as HTMLInputElement;
+    input.addEventListener("change", () => applyTemperature(input));
+
+    if (input.checked) {
+      applyTemperature(input);
+    }
+  }
 }
 
 setupTemperatureListeners();
 
 function setupBaseListeners(): void {
   // TODO: implement this function
+const baseInputs = document.getElementsByName("base");
+
+  for (let i = 0; i < baseInputs.length; i++) {
+    const input = baseInputs[i] as HTMLInputElement;
+    input.addEventListener("change", () => applyBase(input));
+
+    if (input.checked) {
+      applyBase(input);
+    }
+  }
 }
 
 setupBaseListeners();
